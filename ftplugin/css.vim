@@ -1,11 +1,8 @@
-" Options ============================================================== {{{
-
 if !exists("g:wobble_css_map")
   let g:wobble_css_map = 1
 endif
 
-" ====================================================================== }}}
-" Utilities ============================================================ {{{
+
 
 function! s:MapTextObject(sequence, plug, map)
   let plugstring = 'noremap <silent><buffer> <Plug>Wobble' 
@@ -21,8 +18,7 @@ function! s:MapTextObject(sequence, plug, map)
   endif
 endfunction
 
-" ====================================================================== }}}
-" Text Objects ========================================================= {{{
+
 
 " Text objects for selectors
 onoremap <silent> <buffer> ics :normal! [{hhv^<cr>
@@ -43,5 +39,3 @@ vnoremap <silent> <buffer> icv :normal! ^f:wvf;ge<cr>
 " Around values
 onoremap <silent> <buffer> acv :normal! ^f:lv$<cr>
 vnoremap <silent> <buffer> acv :normal! ^f:lv$<cr>
-
-" ====================================================================== }}}
