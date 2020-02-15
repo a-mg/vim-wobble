@@ -7,5 +7,5 @@ onoremap <silent> <buffer> icp :normal! ^vt:ge<cr>
 vnoremap <silent> <buffer> icp :normal! ^vt:ge<cr>
 
 " Text objects for values
-onoremap <silent> <buffer> icv :normal! $hvT:l<cr>
-vnoremap <silent> <buffer> icv :normal! $hvT:l<cr>
+onoremap <silent> <buffer> icv :normal! ^f:wvf;ge<cr>
+vnoremap <silent> <buffer> icv :normal! ^f:wvf;ge<cr>
