@@ -41,6 +41,16 @@ function! s:MapTextObject(sequence, plug, map)
   endif
 endfunction
 
+function! s:UnitTextObject()
+  normal! viwo
+
+  while getline('.')[col('.') - 1] =~# '\v[0-9\-\.]'
+    normal! l
+  endwhile
+
+  normal! o
+endfunction
+
 
 
 call s:MapTextObject('vas',       'aBlock',    'acb')
@@ -50,3 +60,11 @@ call s:MapTextObject('^vf:',      'aProperty', 'acp')
 call s:MapTextObject('^vf:ge',    'iProperty', 'icp')
 call s:MapTextObject('^f:lv$',    'aValue',    'acv')
 call s:MapTextObject('^f:wvf;ge', 'iValue',    'icv')
+
+
+
+onoremap <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
+xnoremap <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
+
+omap icu <Plug>WobbleCSS_iUnit
+xmap icu <Plug>WobbleCSS_iUnit
