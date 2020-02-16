@@ -20,6 +20,8 @@ endfunction
 
 
 
+call s:MapTextObject('vas',       'AroundBlock',    'acb')
+call s:MapTextObject('][vib',     'InnerBlock',     'icb')
 call s:MapTextObject('(][%ge',    'InnerSelector',  'ics')
 call s:MapTextObject('^vf:ge',    'InnerProperty',  'icp')
 call s:MapTextObject('^vf:',      'AroundProperty', 'acp')
