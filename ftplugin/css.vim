@@ -66,5 +66,7 @@ call s:MapTextObject('^f:wvf;ge', 'iValue',    'icv')
 onoremap <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
 xnoremap <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
 
-omap icu <Plug>WobbleCSS_iUnit
-xmap icu <Plug>WobbleCSS_iUnit
+if g:wobble_map_textobjects
+  omap icu <Plug>WobbleCSS_iUnit
+  xmap icu <Plug>WobbleCSS_iUnit
+endif
