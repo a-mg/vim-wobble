@@ -1,3 +1,13 @@
+if !exists("g:wobble_no_mappings")
+  let g:wobble_no_mappings = 0
+endif
+
+if !exists("g:wobble_no_leader")
+  let g:wobble_no_leader = 0
+endif
+
+
+
 " Builds text object mappings for a given sequence. By default, the plugin
 " provides both <Plug>WobbleHTML_ mappings, and i/a mappings, but optionally
 " will omit these so that they may be user-defined.
@@ -19,7 +29,7 @@ function! s:MapTextObject(sequence, plug, map, exe)
   execute 'v' . plugstring
 
   " Only assign i/a mappings if option not set
-  if !exists("g:wobble_no_mappings") || !g:wobble_no_mappings
+  if !g:wobble_no_mappings
     let mapstring =
           \ 'map <silent><buffer> '
           \ . a:map
@@ -38,8 +48,7 @@ function! s:MapLocalLeader(sequence, plug, map)
         \ . a:sequence
   execute 'n' . plugstring
 
-  if (!exists("g:wobble_no_mappings") || !g:wobble_no_mappings)
-        \ && (!exists("g:wobble_no_leader") || !g:wobble_no_leader)
+  if !g:wobble_no_mappings && !g:wobble_no_leader
     let mapstring =
           \ 'map <silent><buffer> <localleader>'
           \ . a:map
