@@ -19,7 +19,7 @@ function! s:MapTextObject(sequence, plug, map, exe)
   execute 'v' . plugstring
 
   " Only assign i/a mappings if option not set
-  if !g:wobble_no_mappings
+  if g:wobble_map_textobjects
     let mapstring =
           \ 'map <silent><buffer> '
           \ . s:PrefixMapping(a:map)
@@ -38,7 +38,7 @@ function! s:MapLocalLeader(sequence, plug, map)
         \ . a:sequence
   execute 'n' . plugstring
 
-  if !g:wobble_no_mappings && !g:wobble_no_leader
+  if g:wobble_map_localleader
     let mapstring =
           \ 'map <silent><buffer> <localleader>'
           \ . s:PrefixMapping(a:map)

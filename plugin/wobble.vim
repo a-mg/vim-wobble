@@ -1,21 +1,23 @@
-" g:wobble_no_mappings
-" (default: off)
+" g:wobble_map_textobjects
+" (default: on)
 "
-" If set, the plugin will not create any mappings for text objects or
-" commands, leaving them to the user. (Text objects and commands are always
-" exposed via <Plug>Wobble...)
-if !exists("g:wobble_no_mappings")
-  let g:wobble_no_mappings = 0
+" Enables default mapping of text objects. If set, the plugin sets up mappings
+" in visual and operator-pending modes. If unset, no mappings are created,
+" preventing shadowing and leaving them user-configurable. (Text objects are
+" always exposed via <Plug>Wobble...)
+if !exists("g:wobble_map_textobjects")
+  let g:wobble_map_textobjects = 1
 endif
 
-" g:wobble_no_leader
-" (default: off)
+" g:wobble_map_localleader
+" (default: on)
 "
-"
-" If set, the plugin will not create any <localleader> mappings. (Used for
-" insert/append HTML attributes)
-if !exists("g:wobble_no_leader")
-  let g:wobble_no_leader = 0
+" Enables default mapping of localleader commands for working with HTML/XML
+" attributes. If set, the plugin sets up mappings in normal mode. If unset, no
+" mappings are created, preventing shadowing and leaving them
+" user-configurable.
+if !exists("g:wobble_map_localleader")
+  let g:wobble_map_localleader = 1
 endif
 
 " g:wobble_xml_prefix

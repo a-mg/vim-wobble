@@ -13,7 +13,7 @@ function! s:MapTextObject(sequence, plug, map)
   execute 'v' . plugstring
 
   " Only assign i/a mappings if option not set
-  if !g:wobble_no_mappings
+  if g:wobble_map_textobjects
     " Assign i/a mappings for visual and operator-pending
     let mapstring =
           \ 'map <silent><buffer> '
