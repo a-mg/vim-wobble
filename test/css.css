@@ -3,9 +3,12 @@ body {
   -webkit-text-stroke-width: .04em;
   background: url('img.jpg') center center no-repeat;
 }
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
+  
+  font-family: sans-serif;
 }
 
 ol, ul {
