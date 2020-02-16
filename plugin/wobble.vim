@@ -20,6 +20,15 @@ if !exists("g:wobble_map_localleader")
   let g:wobble_map_localleader = 1
 endif
 
+" g:wobble_add_keywords
+" (default: on)
+"
+" Enables tweaks to `iskeyword` settings to improve handling of built-in text
+" objects, like numbers in CSS.
+if !exists("g:wobble_add_keywords")
+  let g:wobble_add_keywords = 1
+endif
+
 " g:wobble_xml_prefix
 " (default: h)
 "

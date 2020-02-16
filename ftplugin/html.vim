@@ -5,6 +5,13 @@ let b:did_wobble_html = 1
 
 
 
+if g:wobble_add_keywords
+  setlocal iskeyword+=-
+  setlocal iskeyword+=.
+endif
+
+
+
 " Builds text object mappings for a given sequence. By default, the plugin
 " provides both <Plug>WobbleHTML_ mappings, and i/a mappings, but optionally
 " will omit these so that they may be user-defined.
