@@ -20,10 +20,10 @@ endfunction
 
 
 
-call s:MapTextObject('vas',       'AroundBlock',    'acb')
-call s:MapTextObject('][vib',     'InnerBlock',     'icb')
-call s:MapTextObject('(][%ge',    'InnerSelector',  'ics')
-call s:MapTextObject('^vf:ge',    'InnerProperty',  'icp')
-call s:MapTextObject('^vf:',      'AroundProperty', 'acp')
-call s:MapTextObject('^f:wvf;ge', 'InnerValue',     'icv')
-call s:MapTextObject('^f:lv$',    'AroundValue',    'acv')
+call s:MapTextObject('vas',       'CSS_aBlock',    'acb')
+call s:MapTextObject('][vib',     'CSS_iBlock',    'icb')
+call s:MapTextObject('(][%ge',    'CSS_iSelector', 'ics')
+call s:MapTextObject('^vf:',      'CSS_aProperty', 'acp')
+call s:MapTextObject('^vf:ge',    'CSS_iProperty', 'icp')
+call s:MapTextObject('^f:lv$',    'CSS_aValue',    'acv')
+call s:MapTextObject('^f:wvf;ge', 'CSS_iValue',    'icv')
