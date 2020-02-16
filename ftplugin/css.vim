@@ -4,7 +4,7 @@
 function! s:MapTextObject(sequence, plug, map)
   " Assign <Plug>Wobble... mappings for visual and operator-pending
   let plugstring = 'noremap <silent><buffer> <Plug>Wobble'
-        \ . a:plug . ' :normal! ' . a:sequence . '<cr>'
+        \ . a:plug . ' :<c-u>normal! ' . a:sequence . '<cr>'
   execute 'o' . plugstring
   execute 'v' . plugstring
 
