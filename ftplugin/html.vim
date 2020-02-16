@@ -1,52 +1,54 @@
-" Text objects for element attributes
+" Builds text object mappings for a given sequence. By default, the plugin
+" provides both <Plug>WobbleHTML_ mappings, and i/a mappings, but optionally
+" will omit these so that they may be user-defined.
 "
-"       <div class="lorem ipsum" id="dolor" attr-sit="amet">
-"                     ^
-" iha:       -----
-" ihv:              -----------
-" aha:      --------------------
-"
-vnoremap <silent> <buffer> iha :normal! f"F=T vt=<cr>
-onoremap <silent> <buffer> iha :normal! f"F=T vt=<cr>
-vnoremap <silent> <buffer> ihv :normal! f"F=f"lvi"<cr>
-onoremap <silent> <buffer> ihv :normal! f"F=f"lvi"<cr>
-vnoremap <silent> <buffer> aha :normal! f"F=F v2f"<cr>
-onoremap <silent> <buffer> aha :normal! f"F=F v2f"<cr>
+" If a:exe is set, wrap the sequence with `execute` to allow special
+" character escape sequences.
+function! s:MapTextObject(sequence, plug, map, exe)
+  " Assign <Plug>WobbleHTML_ mappings for visual and operator-pending
+  let plugstring =
+        \ 'noremap <silent><buffer> <Plug>WobbleHTML_'
+        \ . a:plug
+        \ . ' :<c-u>'
+        \ . (a:exe ? 'execute "' : '')
+        \ . 'normal! '
+        \ . a:sequence
+        \ . (a:exe ? '"' : '')
+        \ . '<cr>'
+  execute 'o' . plugstring
+  execute 'v' . plugstring
 
-" Text objects for element attribute list
-"
-"       <div class="lorem ipsum" id="dolor" attr-sit="amet">
-" ihl:       ----------------------------------------------
-" ahl:      -----------------------------------------------
-"
-vnoremap <silent> <buffer> ihl :<c-u>execute "normal! vato\ef lvt>"<cr>
-onoremap <silent> <buffer> ihl :<c-u>execute "normal! vato\ef lvt>"<cr>
-vnoremap <silent> <buffer> ahl :<c-u>execute "normal! vato\ef vt>"<cr>
-onoremap <silent> <buffer> ahl :<c-u>execute "normal! vato\ef vt>"<cr>
-
-" Text objects for element class
-"
-"       <div class="lorem ipsum" id="dolor" attr-sit="amet">
-" ihc:              -----------
-" ahc:      --------------------
-"
-vnoremap <silent> <buffer> ihc :<c-u>execute "normal! vato\e/class\r:noh\rf\"lvi\""<cr>
-onoremap <silent> <buffer> ihc :<c-u>execute "normal! vato\e/class\r:noh\rf\"lvi\""<cr>
-vnoremap <silent> <buffer> ahc :<c-u>execute "normal! vato\e/class\r:noh\rF v2f\""<cr>
-onoremap <silent> <buffer> ahc :<c-u>execute "normal! vato\e/class\r:noh\rF v2f\""<cr>
-
-" Text objects for element id
-"
-"       <div class="lorem ipsum" id="dolor" attr-sit="amet">
-" ihi:                               -----
-" ahi:                          -----------
-"
-vnoremap <silent> <buffer> ihi :<c-u>execute "normal! vato\e/id\r:noh\rf\"lvi\""<cr>
-onoremap <silent> <buffer> ihi :<c-u>execute "normal! vato\e/id\r:noh\rf\"lvi\""<cr>
-vnoremap <silent> <buffer> ahi :<c-u>execute "normal! vato\e/id\r:noh\rF v2f\""<cr>
-onoremap <silent> <buffer> ahi :<c-u>execute "normal! vato\e/id\r:noh\rF v2f\""<cr>
+  " Only assign i/a mappings if option not set
+  if !exists("g:wobble_no_mappings") || !g:wobble_no_mappings
+    let mapstring =
+          \ 'map <silent><buffer> '
+          \ . a:map
+          \ . ' <Plug>WobbleHTML_'
+          \ . a:plug
+    execute 'o' . mapstring
+    execute 'v' . mapstring
+  endif
+endfunction
 
 
+call s:MapTextObject('f"F=T vt=',                    'iName',     'ihn', 0)
+call s:MapTextObject('f"F=f"lvi"',                   'iValue',    'ihv', 0)
+call s:MapTextObject('f"F=F v2f"',                   'aAttrOne',  'aha', 0)
+
+call s:MapTextObject('vato\ef lvt>',                 'iAttrList', 'ihl', 1)
+call s:MapTextObject('vato\ef vt>',                  'aAttrList', 'ahl', 1)
+
+call s:MapTextObject('vato\e/class\r:noh\rf\"lvi\"', 'iClass',    'ihc', 1)
+call s:MapTextObject('vato\e/class\r:noh\rF v2f\"',  'aClass',    'ahc', 1)
+
+call s:MapTextObject('vato\e/id\r:noh\rf\"lvi\"',    'iID',       'ihi', 1)
+call s:MapTextObject('vato\e/id\r:noh\rF v2f\"',     'aID',       'ahi', 1)
+
+
+
+
+
+" TODO rewrite following section
 
 " Add/append a class attribute to a tag
 nnoremap <buffer> <leader>hic vato<esc>/[ \>]<cr>:noh<cr>i class=""<esc>i
