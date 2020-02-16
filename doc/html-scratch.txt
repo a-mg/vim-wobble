@@ -1,0 +1,36 @@
+
+Text objects for element attributes
+
+      <div class="lorem ipsum" id="dolor" attr-sit="amet">
+                    ^
+iha:       -----
+ihv:              -----------
+aha:      --------------------
+
+
+
+
+Text objects for element attribute list
+
+      <div class="lorem ipsum" id="dolor" attr-sit="amet">
+ihl:       ----------------------------------------------
+ahl:      -----------------------------------------------
+
+
+
+
+Text objects for element class
+
+      <div class="lorem ipsum" id="dolor" attr-sit="amet">
+ihc:              -----------
+ahc:      --------------------
+
+
+
+
+Text objects for element id
+
+      <div class="lorem ipsum" id="dolor" attr-sit="amet">
+ihi:                               -----
+ahi:                          -----------
+
