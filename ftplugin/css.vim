@@ -20,7 +20,7 @@ endfunction
 
 
 
-call s:MapTextObject('[{hhv^',    'InnerSelector',  'ics')
+call s:MapTextObject('(][%ge',    'InnerSelector',  'ics')
 call s:MapTextObject('^vf:ge',    'InnerProperty',  'icp')
 call s:MapTextObject('^vf:',      'AroundProperty', 'acp')
 call s:MapTextObject('^f:wvf;ge', 'InnerValue',     'icv')
