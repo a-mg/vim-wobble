@@ -1,9 +1,3 @@
-if !exists("g:wobble_no_mappings")
-  let g:wobble_no_mappings = 0
-endif
-
-
-
 " Builds text object mappings for a given sequence. By default, the plugin
 " provides both <Plug>Wobble... mappings, and i/a mappings, but optionally
 " will omit these so that they may be user-defined.
