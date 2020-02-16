@@ -1,3 +1,10 @@
+if exists("b:did_wobble_html")
+  finish
+endif
+let b:did_wobble_html = 1
+
+
+
 " Builds text object mappings for a given sequence. By default, the plugin
 " provides both <Plug>WobbleHTML_ mappings, and i/a mappings, but optionally
 " will omit these so that they may be user-defined.
