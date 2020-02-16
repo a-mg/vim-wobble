@@ -1,16 +1,10 @@
-if !exists("g:wobble_css_map")
-  let g:wobble_css_map = 1
-endif
-
-
-
 function! s:MapTextObject(sequence, plug, map)
   let plugstring = 'noremap <silent><buffer> <Plug>Wobble' 
         \          . a:plug . ' :normal! ' . a:sequence . '<cr>'
   execute 'o' . plugstring
   execute 'v' . plugstring
 
-  if g:wobble_css_map == 1
+  if !exists("g:wobble_no_mappings") || g:wobble_no_mappings
     let mapstring = 'map <silent><buffer> ' . a:map
           \         . ' <Plug>Wobble' . a:plug
     execute 'o' . mapstring
