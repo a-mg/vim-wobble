@@ -4,7 +4,7 @@ function! s:MapTextObject(sequence, plug, map)
   execute 'o' . plugstring
   execute 'v' . plugstring
 
-  if !exists("g:wobble_no_mappings") || g:wobble_no_mappings
+  if !exists("g:wobble_no_mappings") || !g:wobble_no_mappings
     let mapstring = 'map <silent><buffer> ' . a:map
           \         . ' <Plug>Wobble' . a:plug
     execute 'o' . mapstring
