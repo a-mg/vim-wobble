@@ -22,7 +22,7 @@ function! s:MapTextObject(sequence, plug, map, exe)
   if !g:wobble_no_mappings
     let mapstring =
           \ 'map <silent><buffer> '
-          \ . a:map
+          \ . s:PrefixMapping(a:map)
           \ . ' <Plug>WobbleHTML_'
           \ . a:plug
     execute 'o' . mapstring
@@ -41,33 +41,37 @@ function! s:MapLocalLeader(sequence, plug, map)
   if !g:wobble_no_mappings && !g:wobble_no_leader
     let mapstring =
           \ 'map <silent><buffer> <localleader>'
-          \ . a:map
+          \ . s:PrefixMapping(a:map)
           \ . ' <Plug>WobbleHTML_'
           \ . a:plug
     execute 'n' . mapstring
   endif
 endfunction
 
-
-
-call s:MapTextObject('f"F=T vt=',                    'iName',     'ihn', 0)
-call s:MapTextObject('f"F=f"lvi"',                   'iValue',    'ihv', 0)
-call s:MapTextObject('f"F=F v2f"',                   'aAttrOne',  'aha', 0)
-
-call s:MapTextObject('vato\ef lvt>',                 'iAttrList', 'ihl', 1)
-call s:MapTextObject('vato\ef vt>',                  'aAttrList', 'ahl', 1)
-
-call s:MapTextObject('vato\e/class\r:noh\rf\"lvi\"', 'iClass',    'ihc', 1)
-call s:MapTextObject('vato\e/class\r:noh\rF v2f\"',  'aClass',    'ahc', 1)
-
-call s:MapTextObject('vato\e/id\r:noh\rf\"lvi\"',    'iID',       'ihi', 1)
-call s:MapTextObject('vato\e/id\r:noh\rF v2f\"',     'aID',       'ahi', 1)
+function! s:PrefixMapping(map)
+  return substitute(a:map, '\~', g:wobble_xml_prefix, '')
+endfunction
 
 
 
-call s:MapLocalLeader('vato<esc>f>i<space>',                         'appAttrList', 'hal')
+call s:MapTextObject('f"F=T vt=',                    'iName',     'i~n', 0)
+call s:MapTextObject('f"F=f"lvi"',                   'iValue',    'i~v', 0)
+call s:MapTextObject('f"F=F v2f"',                   'aAttrOne',  'a~a', 0)
 
-call s:MapLocalLeader('vato<esc>/[ \>]<cr>:noh<cr>i class=""<esc>i', 'insClass',    'hic')
-call s:MapLocalLeader('vato<esc>/class<cr>:noh<cr>2f"i<space>',      'appClass',    'hac')
+call s:MapTextObject('vato\ef lvt>',                 'iAttrList', 'i~l', 1)
+call s:MapTextObject('vato\ef vt>',                  'aAttrList', 'a~l', 1)
 
-call s:MapLocalLeader('vato<esc>/[ \>]<cr>:noh<cr>i id=""<esc>i',    'insID',       'hii')
+call s:MapTextObject('vato\e/class\r:noh\rf\"lvi\"', 'iClass',    'i~c', 1)
+call s:MapTextObject('vato\e/class\r:noh\rF v2f\"',  'aClass',    'a~c', 1)
+
+call s:MapTextObject('vato\e/id\r:noh\rf\"lvi\"',    'iID',       'i~i', 1)
+call s:MapTextObject('vato\e/id\r:noh\rF v2f\"',     'aID',       'a~i', 1)
+
+
+
+call s:MapLocalLeader('vato<esc>f>i<space>',                         'appAttrList', '~al')
+
+call s:MapLocalLeader('vato<esc>/[ \>]<cr>:noh<cr>i class=""<esc>i', 'insClass',    '~ic')
+call s:MapLocalLeader('vato<esc>/class<cr>:noh<cr>2f"i<space>',      'appClass',    '~ac')
+
+call s:MapLocalLeader('vato<esc>/[ \>]<cr>:noh<cr>i id=""<esc>i',    'insID',       '~ii')
