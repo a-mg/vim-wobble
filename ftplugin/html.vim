@@ -30,6 +30,26 @@ function! s:MapTextObject(sequence, plug, map, exe)
   endif
 endfunction
 
+function! s:MapLocalLeader(sequence, plug, map)
+  let plugstring =
+        \ 'noremap <silent><buffer> <Plug>WobbleHTML_'
+        \ . a:plug
+        \ . ' '
+        \ . a:sequence
+  execute 'n' . plugstring
+
+  if (!exists("g:wobble_no_mappings") || !g:wobble_no_mappings)
+        \ && (!exists("g:wobble_no_leader") || !g:wobble_no_leader)
+    let mapstring =
+          \ 'map <silent><buffer> <localleader>'
+          \ . a:map
+          \ . ' <Plug>WobbleHTML_'
+          \ . a:plug
+    execute 'n' . mapstring
+  endif
+endfunction
+
+
 
 call s:MapTextObject('f"F=T vt=',                    'iName',     'ihn', 0)
 call s:MapTextObject('f"F=f"lvi"',                   'iValue',    'ihv', 0)
@@ -46,16 +66,9 @@ call s:MapTextObject('vato\e/id\r:noh\rF v2f\"',     'aID',       'ahi', 1)
 
 
 
+call s:MapLocalLeader('vato<esc>f>i<space>',                         'appAttrList', 'hal')
 
+call s:MapLocalLeader('vato<esc>/[ \>]<cr>:noh<cr>i class=""<esc>i', 'insClass',    'hic')
+call s:MapLocalLeader('vato<esc>/class<cr>:noh<cr>2f"i<space>',      'appClass',    'hac')
 
-" TODO rewrite following section
-
-" Add/append a class attribute to a tag
-nnoremap <buffer> <leader>hic vato<esc>/[ \>]<cr>:noh<cr>i class=""<esc>i
-nnoremap <buffer> <leader>hac vato<esc>/class<cr>:noh<cr>2f"i<space>
-
-" Add an id attribute to a tag
-nnoremap <buffer> <leader>hii vato<esc>/[ \>]<cr>:noh<cr>i id=""<esc>i
-
-" Append to a tag's attribute list
-nnoremap <buffer> <leader>hal vato<esc>f>i<space>
+call s:MapLocalLeader('vato<esc>/[ \>]<cr>:noh<cr>i id=""<esc>i',    'insID',       'hii')
