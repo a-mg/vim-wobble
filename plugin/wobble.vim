@@ -1,3 +1,14 @@
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" vim-wobble
+" Text objects and tweaks for editing HTML/XML and CSS in Vim
+"
+" Author:  A. Mattson Gallagher <amg@a-m-g.org>
+" Version: 1.0.0
+" License: MIT
+"
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 " g:wobble_map_textobjects
 " (default: on)
 "
