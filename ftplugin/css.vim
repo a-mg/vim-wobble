@@ -28,12 +28,7 @@ endif
 " map      : x/o key mapping (enabled by map_textobjects option)
 function! s:MapTextObject(sequence, plug, map)
   " Build <Plug>WobbleCSS_ mapping
-  let plugstring =
-        \ 'noremap <silent><buffer> <Plug>WobbleCSS_'
-        \ . a:plug
-        \ . ' :<c-u>normal! '
-        \ . a:sequence
-        \ . '<cr>'
+  let plugstring = 'noremap <silent><buffer> <Plug>WobbleCSS_' . a:plug . ' :<c-u>normal! ' . a:sequence . '<cr>'
   " Assign mapping for operator-pending and visual modes
   execute 'o' . plugstring
   execute 'x' . plugstring
@@ -41,11 +36,7 @@ function! s:MapTextObject(sequence, plug, map)
   " Only assign key mappings when map_textobjects option is set
   if g:wobble_map_textobjects
     " Build key mapping
-    let mapstring =
-          \ 'map <silent><buffer> '
-          \ . a:map
-          \ . ' <Plug>WobbleCSS_'
-          \ . a:plug
+    let mapstring = 'map <silent><buffer> ' . a:map . ' <Plug>WobbleCSS_' . a:plug
     " Assign mapping for operator-pending and visual modes
     execute 'o' . mapstring
     execute 'x' . mapstring
@@ -55,22 +46,22 @@ endfunction
 " Mnemonic mappings for a complete CSS definition block
 " acb   block including selector
 " icb   inside block (between { and })
-call s:MapTextObject('vas',       'aBlock',    'acb')
-call s:MapTextObject('][vib',     'iBlock',    'icb')
+call s:MapTextObject('vas'       , 'aBlock'    , 'acb')
+call s:MapTextObject('][vib'     , 'iBlock'    , 'icb')
 
 "       ...  a, a:hover { ...
 " ics        ^^^^^^^^^^
-call s:MapTextObject('(][%ge',    'iSelector', 'ics')
+call s:MapTextObject('(][%ge'    , 'iSelector' , 'ics')
 
 "       ... font-weight: bold;
 " acp       ^^^^^^^^^^^^
 " icp       ^^^^^^^^^^^
 " acv                   ^^^^^^
 " icv                    ^^^^
-call s:MapTextObject('^vf:',      'aProperty', 'acp')
-call s:MapTextObject('^vf:ge',    'iProperty', 'icp')
-call s:MapTextObject('^f:lv$',    'aValue',    'acv')
-call s:MapTextObject('^f:wvf;ge', 'iValue',    'icv')
+call s:MapTextObject('^vf:'      , 'aProperty' , 'acp')
+call s:MapTextObject('^vf:ge'    , 'iProperty' , 'icp')
+call s:MapTextObject('^f:lv$'    , 'aValue'    , 'acv')
+call s:MapTextObject('^f:wvf;ge' , 'iValue'    , 'icv')
 
 
 
