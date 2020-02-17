@@ -1,15 +1,9 @@
-" Preamble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
-
-
 " Only load once for each buffer
 if exists("b:did_wobble_css")
   finish
 endif
 let b:did_wobble_css = 1
 
-
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
-" Keyword tweaks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
 
 
 " Add keywords to improve handling of word text object (`iw` etc.)
@@ -24,9 +18,6 @@ if g:wobble_add_keywords
   setlocal iskeyword+=@
 endif
 
-
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
-" Text objects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
 
 
 " s:MapTextObject()
@@ -61,10 +52,6 @@ function! s:MapTextObject(sequence, plug, map)
   endif
 endfunction
 
-
-"  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-
-
 " Mnemonic mappings for a complete CSS definition block
 " acb   block including selector
 " icb   inside block (between { and })
@@ -86,9 +73,6 @@ call s:MapTextObject('^f:lv$',    'aValue',    'acv')
 call s:MapTextObject('^f:wvf;ge', 'iValue',    'icv')
 
 
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
-" Unit text object ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
-
 
 " s:UnitTextObject
 " Provides the CSS unit text object.
@@ -106,10 +90,6 @@ function! s:UnitTextObject()
   normal! o
 endfunction
 
-
-"  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-
-
 " Assign <Plug> mapping for operator-pending and visual modes
 onoremap <silent><buffer> <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
 xnoremap <silent><buffer> <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
@@ -120,8 +100,3 @@ if g:wobble_map_textobjects
   omap <silent><buffer> icu <Plug>WobbleCSS_iUnit
   xmap <silent><buffer> icu <Plug>WobbleCSS_iUnit
 endif
-
-
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
-
-" vim: set fdm=marker fdl=0 :

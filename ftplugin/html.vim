@@ -1,15 +1,9 @@
-" Preamble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
-
-
 " Only load once for each buffer
 if exists("b:did_wobble_html")
   finish
 endif
 let b:did_wobble_html = 1
 
-
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
-" Keyword tweaks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
 
 
 " Add keywords to improve handling of word text object (`iw` etc.)
@@ -21,9 +15,6 @@ if g:wobble_add_keywords
 endif
 
 
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
-" Text objects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
-
 
 " s:PrefixMapping()
 " Replaces the prefix placeholder (~) with the user-configurable XML mapping
@@ -33,6 +24,8 @@ endif
 function! s:PrefixMapping(map)
   return substitute(a:map, '\~', g:wobble_xml_prefix, '')
 endfunction
+
+
 
 " s:MapTextObject()
 " Constructs text object mappings for a given sequence.
@@ -70,10 +63,6 @@ function! s:MapTextObject(sequence, plug, map, exe)
   endif
 endfunction
 
-
-"  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-
-
 "       ... attr-sit="amet" ...
 " a~a      ^^^^^^^^^^^^^^^^
 " i~n       ^^^^^^^^
@@ -100,9 +89,6 @@ call s:MapTextObject('vato\e/class\r:noh\rf\"lvi\"', 'iClass',    'i~c', 1)
 call s:MapTextObject('vato\e/id\r:noh\rF v2f\"',     'aID',       'a~i', 1)
 call s:MapTextObject('vato\e/id\r:noh\rf\"lvi\"',    'iID',       'i~i', 1)
 
-
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
-" LocalLeader mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
 
 
 " s:MapLocalLeader()
@@ -134,10 +120,6 @@ function! s:MapLocalLeader(sequence, plug, map)
   endif
 endfunction
 
-
-"  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-
-
 "       ... <div class="lorem ipsum" id="dolor" attr-sit="amet">
 " ~al > ... <div class="lorem ipsum" id="dolor" attr-sit="amet" |>
 call s:MapLocalLeader('vato<esc>f>i<space>',                         'appAttrList', '~al')
@@ -151,8 +133,3 @@ call s:MapLocalLeader('vato<esc>/class<cr>:noh<cr>2f"i<space>',      'appClass',
 "       ... <div attr-sit="amet">
 " ~ii > ... <div id="|" attr-sit="amet">
 call s:MapLocalLeader('vato<esc>/[ \>]<cr>:noh<cr>i id=""<esc>i',    'insID',       '~ii')
-
-
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
-
-" vim: set fdm=marker fdl=0 :

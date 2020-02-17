@@ -1,4 +1,4 @@
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"
 " vim-wobble
 " Text objects and tweaks for editing HTML/XML and CSS in Vim
 "
@@ -6,8 +6,7 @@
 " Version: 1.0.0
 " License: MIT
 "
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" Plugin options ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
+
 
 
 " g:wobble_map_textobjects
@@ -50,8 +49,3 @@ endif
 if !exists("g:wobble_xml_prefix")
   let g:wobble_xml_prefix = 'h'
 endif
-
-
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
-
-" vim: set fdm=marker fdl=0 :
