@@ -111,14 +111,14 @@ endfunction
 
 
 " Assign <Plug> mapping for operator-pending and visual modes
-onoremap <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
-xnoremap <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
+onoremap <silent><buffer> <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
+xnoremap <silent><buffer> <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
 
 " Only assign key mappings when map_textobjects is set
 if g:wobble_map_textobjects
   " Assign mapping for operator-pending and visual modes
-  omap icu <Plug>WobbleCSS_iUnit
-  xmap icu <Plug>WobbleCSS_iUnit
+  omap <silent><buffer> icu <Plug>WobbleCSS_iUnit
+  xmap <silent><buffer> icu <Plug>WobbleCSS_iUnit
 endif
 
 
