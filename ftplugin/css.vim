@@ -45,7 +45,7 @@ function! s:MapTextObject(sequence, plug, map)
         \ . '<cr>'
   " Assign mapping for operator-pending and visual modes
   execute 'o' . plugstring
-  execute 'v' . plugstring
+  execute 'x' . plugstring
 
   " Only assign key mappings when map_textobjects option is set
   if g:wobble_map_textobjects
@@ -57,7 +57,7 @@ function! s:MapTextObject(sequence, plug, map)
           \ . a:plug
     " Assign mapping for operator-pending and visual modes
     execute 'o' . mapstring
-    execute 'v' . mapstring
+    execute 'x' . mapstring
   endif
 endfunction
 
