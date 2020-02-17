@@ -7,6 +7,7 @@
 " License: MIT
 "
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" Plugin options ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
 
 
 " g:wobble_map_textobjects
@@ -49,3 +50,8 @@ endif
 if !exists("g:wobble_xml_prefix")
   let g:wobble_xml_prefix = 'h'
 endif
+
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
+
+" vim: set fdm=marker fdl=0 :

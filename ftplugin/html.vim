@@ -1,9 +1,15 @@
+" Preamble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
+
+
 " Only load once for each buffer
 if exists("b:did_wobble_html")
   finish
 endif
 let b:did_wobble_html = 1
 
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
+" Keyword tweaks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
 
 
 " Add keywords to improve handling of word text object (`iw` etc.)
@@ -14,6 +20,9 @@ if g:wobble_add_keywords
   setlocal iskeyword+=.
 endif
 
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
+" Text objects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
 
 
 " s:MapTextObject()
@@ -51,6 +60,41 @@ function! s:MapTextObject(sequence, plug, map, exe)
     execute 'v' . mapstring
   endif
 endfunction
+
+
+"  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+
+"       ... attr-sit="amet" ...
+" a~a      ^^^^^^^^^^^^^^^^
+" i~n       ^^^^^^^^
+" i~v                 ^^^^
+call s:MapTextObject('f"F=F v2f"',                   'aAttrOne',  'a~a', 0)
+call s:MapTextObject('f"F=T vt=',                    'iName',     'i~n', 0)
+call s:MapTextObject('f"F=f"lvi"',                   'iValue',    'i~v', 0)
+
+"       ... <div class="lorem ipsum" id="dolor" attr-sit="amet">
+" a~l           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+" i~l            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+call s:MapTextObject('vato\ef vt>',                  'aAttrList', 'a~l', 1)
+call s:MapTextObject('vato\ef lvt>',                 'iAttrList', 'i~l', 1)
+
+"       ... class="lorem ipsum" ...
+" a~c      ^^^^^^^^^^^^^^^^^^^^
+" i~c              ^^^^^^^^^^^
+call s:MapTextObject('vato\e/class\r:noh\rF v2f\"',  'aClass',    'a~c', 1)
+call s:MapTextObject('vato\e/class\r:noh\rf\"lvi\"', 'iClass',    'i~c', 1)
+
+"       ... id="dolor" ...
+" a~i      ^^^^^^^^^^^
+" i~i           ^^^^^
+call s:MapTextObject('vato\e/id\r:noh\rF v2f\"',     'aID',       'a~i', 1)
+call s:MapTextObject('vato\e/id\r:noh\rf\"lvi\"',    'iID',       'i~i', 1)
+
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
+" LocalLeader mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
+
 
 " s:MapLocalLeader()
 " Constructs localleader-prefixed commands for working with attributes.
@@ -91,33 +135,7 @@ function! s:PrefixMapping(map)
 endfunction
 
 
-
-"       ... attr-sit="amet" ...
-" a~a      ^^^^^^^^^^^^^^^^
-" i~n       ^^^^^^^^
-" i~v                 ^^^^
-call s:MapTextObject('f"F=F v2f"',                   'aAttrOne',  'a~a', 0)
-call s:MapTextObject('f"F=T vt=',                    'iName',     'i~n', 0)
-call s:MapTextObject('f"F=f"lvi"',                   'iValue',    'i~v', 0)
-
-"       ... <div class="lorem ipsum" id="dolor" attr-sit="amet">
-" a~l           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-" i~l            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-call s:MapTextObject('vato\ef vt>',                  'aAttrList', 'a~l', 1)
-call s:MapTextObject('vato\ef lvt>',                 'iAttrList', 'i~l', 1)
-
-"       ... class="lorem ipsum" ...
-" a~c      ^^^^^^^^^^^^^^^^^^^^
-" i~c              ^^^^^^^^^^^
-call s:MapTextObject('vato\e/class\r:noh\rF v2f\"',  'aClass',    'a~c', 1)
-call s:MapTextObject('vato\e/class\r:noh\rf\"lvi\"', 'iClass',    'i~c', 1)
-
-"       ... id="dolor" ...
-" a~i      ^^^^^^^^^^^
-" i~i           ^^^^^
-call s:MapTextObject('vato\e/id\r:noh\rF v2f\"',     'aID',       'a~i', 1)
-call s:MapTextObject('vato\e/id\r:noh\rf\"lvi\"',    'iID',       'i~i', 1)
-
+"  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 
 "       ... <div class="lorem ipsum" id="dolor" attr-sit="amet">
@@ -133,3 +151,8 @@ call s:MapLocalLeader('vato<esc>/class<cr>:noh<cr>2f"i<space>',      'appClass',
 "       ... <div attr-sit="amet">
 " ~ii > ... <div id="|" attr-sit="amet">
 call s:MapLocalLeader('vato<esc>/[ \>]<cr>:noh<cr>i id=""<esc>i',    'insID',       '~ii')
+
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
+
+" vim: set fdm=marker fdl=0 :

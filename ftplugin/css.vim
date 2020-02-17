@@ -1,9 +1,15 @@
+" Preamble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
+
+
 " Only load once for each buffer
 if exists("b:did_wobble_css")
   finish
 endif
 let b:did_wobble_css = 1
 
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
+" Keyword tweaks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
 
 
 " Add keywords to improve handling of word text object (`iw` etc.)
@@ -18,6 +24,9 @@ if g:wobble_add_keywords
   setlocal iskeyword+=@
 endif
 
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
+" Text objects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
 
 
 " s:MapTextObject()
@@ -52,22 +61,8 @@ function! s:MapTextObject(sequence, plug, map)
   endif
 endfunction
 
-" s:UnitTextObject
-" Provides the CSS unit text object.
-"
-"       ... 100px ...
-" icu          ^^
-function! s:UnitTextObject()
-  " Select the word and move cursor to start of selection
-  normal! viwo
-  " Walk forward (deselecting) until cursor is not over a number
-  while getline('.')[col('.') - 1] =~# '\v[0-9\-\.]'
-    normal! l
-  endwhile
-  " Move the cursor to the end of selection
-  normal! o
-endfunction
 
+"  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 
 " Mnemonic mappings for a complete CSS definition block
@@ -91,6 +86,29 @@ call s:MapTextObject('^f:lv$',    'aValue',    'acv')
 call s:MapTextObject('^f:wvf;ge', 'iValue',    'icv')
 
 
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
+" Unit text object ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
+
+
+" s:UnitTextObject
+" Provides the CSS unit text object.
+"
+"       ... 100px ...
+" icu          ^^
+function! s:UnitTextObject()
+  " Select the word and move cursor to start of selection
+  normal! viwo
+  " Walk forward (deselecting) until cursor is not over a number
+  while getline('.')[col('.') - 1] =~# '\v[0-9\-\.]'
+    normal! l
+  endwhile
+  " Move the cursor to the end of selection
+  normal! o
+endfunction
+
+
+"  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
 
 " Assign <Plug> mapping for operator-pending and visual modes
 onoremap <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
@@ -102,3 +120,8 @@ if g:wobble_map_textobjects
   omap icu <Plug>WobbleCSS_iUnit
   xmap icu <Plug>WobbleCSS_iUnit
 endif
+
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ }}}
+
+" vim: set fdm=marker fdl=0 :
