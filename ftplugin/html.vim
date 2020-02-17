@@ -25,6 +25,15 @@ endif
 " Text objects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ {{{
 
 
+" s:PrefixMapping()
+" Replaces the prefix placeholder (~) with the user-configurable XML mapping
+" prefix character (set in xml_prefix).
+"
+" map : key mapping containing placeholder
+function! s:PrefixMapping(map)
+  return substitute(a:map, '\~', g:wobble_xml_prefix, '')
+endfunction
+
 " s:MapTextObject()
 " Constructs text object mappings for a given sequence.
 "
@@ -123,15 +132,6 @@ function! s:MapLocalLeader(sequence, plug, map)
     " Assign mapping for normal mode
     execute 'n' . mapstring
   endif
-endfunction
-
-" s:PrefixMapping()
-" Replaces the prefix placeholder (~) with the user-configurable XML mapping
-" prefix character (set in xml_prefix).
-"
-" map : key mapping containing placeholder
-function! s:PrefixMapping(map)
-  return substitute(a:map, '\~', g:wobble_xml_prefix, '')
 endfunction
 
 
