@@ -27,6 +27,8 @@ call wobble#MapTextObject('vato\e/class\r:noh\rf\"lvi\"' , 'iClass'    , 'iC' , 
 call wobble#MapTextObject('vato\e/id\r:noh\rF v2f\"'     , 'aID'       , 'aI' , 1 , 1)
 call wobble#MapTextObject('vato\e/id\r:noh\rf\"lvi\"'    , 'iID'       , 'iI' , 1 , 1)
 
+call wobble#MapTextObject('vi<geowo'                     , 'iComment'  , 'ic' , 1 , 0)
+
 
 
 call wobble#MapLocalLeader('vato<esc>f>i<space>'                         , 'appendTagAttrs' , 'aL')
