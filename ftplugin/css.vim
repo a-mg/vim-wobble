@@ -18,15 +18,15 @@ endif
 
 
 
-call wobble#MapTextObject('vas'       , 'aBlock'    , 'acb', 0)
-call wobble#MapTextObject('][vib'     , 'iBlock'    , 'icb', 0)
+" call wobble#MapTextObject('vas'       , 'aBlock'    , 'acb', 0)
+" call wobble#MapTextObject('][vib'     , 'iBlock'    , 'icb', 0)
 
-call wobble#MapTextObject('(][%ge'    , 'iSelector' , 'ics', 0)
+call wobble#MapTextObject('(][%ge'    , 'iSelector' , 'iS', 0)
 
-call wobble#MapTextObject('^vf:'      , 'aProperty' , 'acp', 0)
-call wobble#MapTextObject('^vf:ge'    , 'iProperty' , 'icp', 0)
-call wobble#MapTextObject('^f:lv$'    , 'aValue'    , 'acv', 0)
-call wobble#MapTextObject('^f:wvf;ge' , 'iValue'    , 'icv', 0)
+call wobble#MapTextObject('^vf:'      , 'aProperty' , 'aP', 0)
+call wobble#MapTextObject('^vf:ge'    , 'iProperty' , 'iP', 0)
+call wobble#MapTextObject('^f:lv$'    , 'aValue'    , 'aV', 0)
+call wobble#MapTextObject('^f:wvf;ge' , 'iValue'    , 'iV', 0)
 
 
 
@@ -41,10 +41,10 @@ function! s:UnitTextObject()
   normal! o
 endfunction
 
-onoremap <silent><buffer> <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
-xnoremap <silent><buffer> <Plug>WobbleCSS_iUnit :<c-u>call <SID>UnitTextObject()<cr>
+onoremap <silent><buffer> <Plug>Wobble_iUnit :<c-u>call <SID>UnitTextObject()<cr>
+xnoremap <silent><buffer> <Plug>Wobble_iUnit :<c-u>call <SID>UnitTextObject()<cr>
 
 if g:wobble_map_textobjects
-  omap <silent><buffer> icu <Plug>WobbleCSS_iUnit
-  xmap <silent><buffer> icu <Plug>WobbleCSS_iUnit
+  omap <silent><buffer> iU <Plug>Wobble_iUnit
+  xmap <silent><buffer> iU <Plug>Wobble_iUnit
 endif
