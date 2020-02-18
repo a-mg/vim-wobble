@@ -5,15 +5,6 @@ let b:loaded_wobble_html = 1
 
 
 
-if g:wobble_add_keywords
-  " Keep multi-word attributes together (`data-name`)
-  setlocal iskeyword+=-
-  " Keep decimal numbers together (`1.5`)
-  setlocal iskeyword+=.
-endif
-
-
-
 call wobble#MapTextObject('f"F=F v2f"'                   , 'aAttr'     , 'aA')
 call wobble#MapTextObject('f"F=T vt='                    , 'iName'     , 'iN')
 call wobble#MapTextObject('f"F=f"lvi"'                   , 'iValue'    , 'iV')
