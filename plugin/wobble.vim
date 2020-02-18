@@ -9,6 +9,13 @@
 
 
 
+if exists("g:loaded_wobble")
+  finish
+endif
+let g:loaded_wobble = 1
+
+
+
 function! s:PluginSetting(name, default)
   let setting = "g:wobble_" . a:name
   if !exists(setting)

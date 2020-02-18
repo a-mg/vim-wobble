@@ -1,7 +1,7 @@
-if exists("b:did_wobble_html")
+if exists("b:loaded_wobble_html") || !exists("g:loaded_wobble")
   finish
 endif
-let b:did_wobble_html = 1
+let b:loaded_wobble_html = 1
 
 
 
