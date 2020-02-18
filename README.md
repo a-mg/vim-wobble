@@ -1,5 +1,5 @@
 # vim-wobble
-Text objects and tweaks for editing HTML/XML and CSS
+Text objects and tweaks for editing HTML/XML and CSS<br>
+wobble's **w**eb **ob**jects **b**ring **l**ight to your **e**ditor
 
-**This plugin is currently in active development.** When it is ready to use, I
-will tag a release, and this readme will be replaced with full documentation.
+**status**: preparing documentation for release
