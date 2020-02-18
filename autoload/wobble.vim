@@ -1,12 +1,20 @@
-function! wobble#MapTextObject(sequence, name, map, norm, exe)
+function! wobble#MapTextObject(sequence, name, map, ...)
+  if a:0 > 0
+    let exe  = (stridx(a:1, '+e') >= 0)
+    let norm = (stridx(a:1, '-n') <  0)
+  else
+    let exe  = 0
+    let norm = 1
+  endif
+
   let plugstring =
         \  'noremap <silent><buffer> '
         \. '<Plug>Wobble_' . a:name
         \. ' :<c-u>'
-        \. (a:exe ? 'execute "' : '')
-        \. (a:norm ? 'normal! ' : '')
+        \. (exe ? 'execute "' : '')
+        \. (norm ? 'normal! ' : '')
         \. a:sequence
-        \. (a:exe ? '"' : '')
+        \. (exe ? '"' : '')
         \. '<cr>'
 
   execute 'o' . plugstring

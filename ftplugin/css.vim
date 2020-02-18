@@ -20,14 +20,14 @@ endif
 
 
 
-" call wobble#MapTextObject('vas'       , 'aBlock'    , 'acb', 0)
-" call wobble#MapTextObject('][vib'     , 'iBlock'    , 'icb', 0)
+" call wobble#MapTextObject('vas'       , 'aBlock'    , 'acb')
+" call wobble#MapTextObject('][vib'     , 'iBlock'    , 'icb')
 
-call wobble#MapTextObject('vas%ge'              , 'iSelector' , 'iS' , 1 , 0)
+call wobble#MapTextObject('vas%ge'              , 'iSelector' , 'iS')
 
-call wobble#MapTextObject('^vf:'                , 'aProperty' , 'aP' , 1 , 0)
-call wobble#MapTextObject('^vf:ge'              , 'iProperty' , 'iP' , 1 , 0)
-call wobble#MapTextObject('^f:lv$'              , 'aValue'    , 'aV' , 1 , 0)
-call wobble#MapTextObject('^f:wvf;ge'           , 'iValue'    , 'iV' , 1 , 0)
+call wobble#MapTextObject('^vf:'                , 'aProperty' , 'aP')
+call wobble#MapTextObject('^vf:ge'              , 'iProperty' , 'iP')
+call wobble#MapTextObject('^f:lv$'              , 'aValue'    , 'aV')
+call wobble#MapTextObject('^f:wvf;ge'           , 'iValue'    , 'iV')
 
-call wobble#MapTextObject('call wobble#iUnit()' , 'iUnit'     , 'iU' , 0 , 0)
+call wobble#MapTextObject('call wobble#iUnit()' , 'iUnit'     , 'iU' , '-n')

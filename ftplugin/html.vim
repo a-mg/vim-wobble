@@ -14,20 +14,20 @@ endif
 
 
 
-call wobble#MapTextObject('f"F=F v2f"'                   , 'aAttr'     , 'aA' , 1 , 0)
-call wobble#MapTextObject('f"F=T vt='                    , 'iName'     , 'iN' , 1 , 0)
-call wobble#MapTextObject('f"F=f"lvi"'                   , 'iValue'    , 'iV' , 1 , 0)
+call wobble#MapTextObject('f"F=F v2f"'                   , 'aAttr'     , 'aA')
+call wobble#MapTextObject('f"F=T vt='                    , 'iName'     , 'iN')
+call wobble#MapTextObject('f"F=f"lvi"'                   , 'iValue'    , 'iV')
 
-call wobble#MapTextObject('vato\ef vt>'                  , 'aTagAttrs' , 'aL' , 1 , 1)
-call wobble#MapTextObject('vato\ef lvt>'                 , 'iTagAttrs' , 'iL' , 1 , 1)
+call wobble#MapTextObject('vato\ef vt>'                  , 'aTagAttrs' , 'aL' , '+e')
+call wobble#MapTextObject('vato\ef lvt>'                 , 'iTagAttrs' , 'iL' , '+e')
 
-call wobble#MapTextObject('vato\e/class\r:noh\rF v2f\"'  , 'aClass'    , 'aC' , 1 , 1)
-call wobble#MapTextObject('vato\e/class\r:noh\rf\"lvi\"' , 'iClass'    , 'iC' , 1 , 1)
+call wobble#MapTextObject('vato\e/class\r:noh\rF v2f\"'  , 'aClass'    , 'aC' , '+e')
+call wobble#MapTextObject('vato\e/class\r:noh\rf\"lvi\"' , 'iClass'    , 'iC' , '+e')
 
-call wobble#MapTextObject('vato\e/id\r:noh\rF v2f\"'     , 'aID'       , 'aI' , 1 , 1)
-call wobble#MapTextObject('vato\e/id\r:noh\rf\"lvi\"'    , 'iID'       , 'iI' , 1 , 1)
+call wobble#MapTextObject('vato\e/id\r:noh\rF v2f\"'     , 'aID'       , 'aI' , '+e')
+call wobble#MapTextObject('vato\e/id\r:noh\rf\"lvi\"'    , 'iID'       , 'iI' , '+e')
 
-call wobble#MapTextObject('vi<geowo'                     , 'iComment'  , 'ic' , 1 , 0)
+call wobble#MapTextObject('vi<geowo'                     , 'iComment'  , 'ic')
 
 
 
