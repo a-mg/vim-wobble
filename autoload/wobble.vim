@@ -15,7 +15,7 @@ function! wobble#MapTextObject(sequence, name, map, norm, exe)
   if g:wobble_map_textobjects
     let mapstring =
           \  'map <silent><buffer> '
-          \. s:PrefixMapping(a:map)
+          \. a:map
           \. ' <Plug>Wobble_' . a:name
 
     execute 'o' . mapstring
@@ -34,7 +34,7 @@ function! wobble#MapLocalLeader(sequence, name, map)
   if g:wobble_map_localleader
     let mapstring =
           \  'map <silent><buffer> '
-          \. '<localleader>' . s:PrefixMapping(a:map)
+          \. '<localleader>' . a:map
           \. ' <Plug>Wobble_' . a:name
 
     execute 'n' . mapstring
