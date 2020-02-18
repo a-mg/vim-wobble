@@ -1,11 +1,7 @@
 function! wobble#MapTextObject(sequence, name, map, ...)
-  if a:0 > 0
-    let exe  = (stridx(a:1, '+e') >= 0)
-    let norm = (stridx(a:1, '-n') <  0)
-  else
-    let exe  = 0
-    let norm = 1
-  endif
+  let flags = (a:0 > 0) ? a:1 : ''
+  let exe   = (stridx(flags, '+e') >= 0)
+  let norm  = (stridx(flags, '-n') <  0)
 
   let plugstring =
         \  'noremap <silent><buffer> '
