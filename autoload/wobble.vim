@@ -1,6 +1,11 @@
 function! wobble#MapTextObject(sequence, name, map, ...)
+  " Check option flags and set defaults
   let flags = (a:0 > 0) ? a:1 : ''
+  " exe -> wrap rhs in execute "...", allowing searches/special chars
+  " (default: off)
   let exe   = (stridx(flags, '+e') >= 0)
+  " norm -> prefix rhs with normal! ..., which makes motions work and prevents
+  " inserting text (always used, except when calling functions) (default: on)
   let norm  = (stridx(flags, '-n') <  0)
 
   let plugstring =
@@ -13,10 +18,14 @@ function! wobble#MapTextObject(sequence, name, map, ...)
         \. (exe ? '"' : '')
         \. '<cr>'
 
+  " Operator-pending and visual modes. xmap (not vmap) prevents mapping in
+  " select mode (mouse), where keys are expected to replace the selection, not
+  " act on it. (see :help Select-mode-mapping)
   execute 'o' . plugstring
   execute 'x' . plugstring
 
   if g:wobble_map_textobjects
+    " Map commands if option is set
     let mapstring =
           \  'map <silent><buffer> '
           \. a:map
@@ -27,6 +36,8 @@ function! wobble#MapTextObject(sequence, name, map, ...)
   endif
 endfunction
 
+
+
 function! wobble#MapLocalLeader(sequence, name, map)
   let plugstring =
         \  'noremap <silent><buffer> '
@@ -36,6 +47,7 @@ function! wobble#MapLocalLeader(sequence, name, map)
   execute 'n' . plugstring
 
   if g:wobble_map_localleader
+    " Map commands if option is set
     let mapstring =
           \  'map <silent><buffer> '
           \. '<localleader>' . a:map
@@ -44,6 +56,8 @@ function! wobble#MapLocalLeader(sequence, name, map)
     execute 'n' . mapstring
   endif
 endfunction
+
+
 
 function! wobble#iUnit()
   " Select the WORD and move cursor to start of selection
