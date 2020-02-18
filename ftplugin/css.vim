@@ -21,7 +21,7 @@ endif
 " call wobble#MapTextObject('vas'       , 'aBlock'    , 'acb', 0)
 " call wobble#MapTextObject('][vib'     , 'iBlock'    , 'icb', 0)
 
-call wobble#MapTextObject('(][%ge'    , 'iSelector' , 'iS', 0)
+call wobble#MapTextObject('vas%ge'    , 'iSelector' , 'iS', 0)
 
 call wobble#MapTextObject('^vf:'      , 'aProperty' , 'aP', 0)
 call wobble#MapTextObject('^vf:ge'    , 'iProperty' , 'iP', 0)
