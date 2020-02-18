@@ -1,6 +1,6 @@
 "
 " vim-wobble
-" Text objects and tweaks for editing HTML/XML and CSS in Vim
+" Text objects and tweaks for writing HTML/XML and CSS in Vim
 "
 " Author:  A. Mattson Gallagher <amg@a-m-g.org>
 " Version: 1.0.0
