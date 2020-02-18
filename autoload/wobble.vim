@@ -50,12 +50,16 @@ function! wobble#MapLocalLeader(sequence, name, map)
 endfunction
 
 function! wobble#iUnit()
-  " Select the word and move cursor to start of selection
-  normal! viwo
-  " Walk forward (deselecting) until cursor is not over a number
-  while getline('.')[col('.') - 1] =~# '\v[0-9\-\.]'
+  " Select the WORD and move cursor to start of selection
+  normal! viWo
+  " Walk forward until cursor is on a unit character
+  while getline('.')[col('.') - 1] !~# '\v[a-zA-Z%]'
     normal! l
   endwhile
   " Move the cursor to the end of selection
   normal! o
+  " Walk back to trim semicolons, commas, etc.
+  while getline('.')[col('.') - 1] !~# '\v[a-zA-Z%]'
+    normal! h
+  endwhile
 endfunction
