@@ -20,9 +20,6 @@ endif
 
 
 
-" call wobble#MapTextObject('vas'       , 'aBlock'    , 'acb')
-" call wobble#MapTextObject('][vib'     , 'iBlock'    , 'icb')
-
 call wobble#MapTextObject('vas%ge'              , 'iSelector' , 'iS')
 
 call wobble#MapTextObject('^vf:'                , 'aProperty' , 'aP')
