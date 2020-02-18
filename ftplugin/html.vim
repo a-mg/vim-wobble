@@ -9,8 +9,8 @@ call wobble#MapTextObject('f"F=Bv2f"'                    , 'aAttr'     , 'aA')
 call wobble#MapTextObject('f"F=Bvt='                     , 'iName'     , 'iN')
 call wobble#MapTextObject('f"F=f"lvi"'                   , 'iValue'    , 'iV')
 
-call wobble#MapTextObject('vato\ef vt>'                  , 'aTagAttrs' , 'aL' , '+e')
-call wobble#MapTextObject('vato\ef lvt>'                 , 'iTagAttrs' , 'iL' , '+e')
+call wobble#MapTextObject('vato\evi<of o'                , 'aTagAttrs' , 'aL' , '+e')
+call wobble#MapTextObject('vato\evi<oWo'                 , 'iTagAttrs' , 'iL' , '+e')
 
 call wobble#MapTextObject('vato\e/class\r:noh\rF v2f\"'  , 'aClass'    , 'aC' , '+e')
 call wobble#MapTextObject('vato\e/class\r:noh\rf\"lvi\"' , 'iClass'    , 'iC' , '+e')
