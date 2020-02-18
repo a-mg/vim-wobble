@@ -5,8 +5,8 @@ let b:loaded_wobble_html = 1
 
 
 
-call wobble#MapTextObject('f"F=F v2f"'                   , 'aAttr'     , 'aA')
-call wobble#MapTextObject('f"F=T vt='                    , 'iName'     , 'iN')
+call wobble#MapTextObject('f"F=Bv2f"'                    , 'aAttr'     , 'aA')
+call wobble#MapTextObject('f"F=Bvt='                     , 'iName'     , 'iN')
 call wobble#MapTextObject('f"F=f"lvi"'                   , 'iValue'    , 'iV')
 
 call wobble#MapTextObject('vato\ef vt>'                  , 'aTagAttrs' , 'aL' , '+e')
