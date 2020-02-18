@@ -18,27 +18,15 @@ endif
 
 
 
-function! s:MapTextObject(sequence, plug, map)
-  let plugstring = 'noremap <silent><buffer> <Plug>WobbleCSS_' . a:plug . ' :<c-u>normal! ' . a:sequence . '<cr>'
-  execute 'o' . plugstring
-  execute 'x' . plugstring
+call wobble#MapTextObject('vas'       , 'aBlock'    , 'acb', 0)
+call wobble#MapTextObject('][vib'     , 'iBlock'    , 'icb', 0)
 
-  if g:wobble_map_textobjects
-    let mapstring = 'map <silent><buffer> ' . a:map . ' <Plug>WobbleCSS_' . a:plug
-    execute 'o' . mapstring
-    execute 'x' . mapstring
-  endif
-endfunction
+call wobble#MapTextObject('(][%ge'    , 'iSelector' , 'ics', 0)
 
-call s:MapTextObject('vas'       , 'aBlock'    , 'acb')
-call s:MapTextObject('][vib'     , 'iBlock'    , 'icb')
-
-call s:MapTextObject('(][%ge'    , 'iSelector' , 'ics')
-
-call s:MapTextObject('^vf:'      , 'aProperty' , 'acp')
-call s:MapTextObject('^vf:ge'    , 'iProperty' , 'icp')
-call s:MapTextObject('^f:lv$'    , 'aValue'    , 'acv')
-call s:MapTextObject('^f:wvf;ge' , 'iValue'    , 'icv')
+call wobble#MapTextObject('^vf:'      , 'aProperty' , 'acp', 0)
+call wobble#MapTextObject('^vf:ge'    , 'iProperty' , 'icp', 0)
+call wobble#MapTextObject('^f:lv$'    , 'aValue'    , 'acv', 0)
+call wobble#MapTextObject('^f:wvf;ge' , 'iValue'    , 'icv', 0)
 
 
 
