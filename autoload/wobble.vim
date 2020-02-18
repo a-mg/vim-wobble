@@ -1,7 +1,3 @@
-function! s:PrefixMapping(map)
-  return substitute(a:map, '\~', g:wobble_xml_prefix, '')
-endfunction
-
 function! wobble#MapTextObject(sequence, name, map, norm, exe)
   let plugstring =
         \  'noremap <silent><buffer> '
