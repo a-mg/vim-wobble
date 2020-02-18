@@ -18,4 +18,4 @@ endfunction
 
 call s:PluginSetting('map_textobjects' , 1)
 call s:PluginSetting('map_localleader' , 1)
-call s:PluginSetting('add_keywords'    , 1)
+call s:PluginSetting('add_keywords'    , 0)
