@@ -2,13 +2,16 @@ function! s:PrefixMapping(map)
   return substitute(a:map, '\~', g:wobble_xml_prefix, '')
 endfunction
 
-function! wobble#MapTextObject(sequence, name, map, exe)
+function! wobble#MapTextObject(sequence, name, map, norm, exe)
   let plugstring =
         \  'noremap <silent><buffer> '
         \. '<Plug>Wobble_' . a:name
-        \. ' :<c-u>' . (a:exe ? 'execute "' : '') . 'normal! '
+        \. ' :<c-u>'
+        \. (a:exe ? 'execute "' : '')
+        \. (a:norm ? 'normal! ' : '')
         \. a:sequence
-        \. (a:exe ? '"' : '') . '<cr>'
+        \. (a:exe ? '"' : '')
+        \. '<cr>'
 
   execute 'o' . plugstring
   execute 'x' . plugstring
@@ -40,4 +43,15 @@ function! wobble#MapLocalLeader(sequence, name, map)
 
     execute 'n' . mapstring
   endif
+endfunction
+
+function! wobble#iUnit()
+  " Select the word and move cursor to start of selection
+  normal! viwo
+  " Walk forward (deselecting) until cursor is not over a number
+  while getline('.')[col('.') - 1] =~# '\v[0-9\-\.]'
+    normal! l
+  endwhile
+  " Move the cursor to the end of selection
+  normal! o
 endfunction

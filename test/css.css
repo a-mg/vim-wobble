@@ -1,6 +1,7 @@
 body {
 	line-height: 1;
   -webkit-text-stroke-width: 0.04em;
+  width: 100%;
   background: url('img.jpg') center center no-repeat;
 }
 
