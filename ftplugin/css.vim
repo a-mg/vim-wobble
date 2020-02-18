@@ -14,6 +14,8 @@ if g:wobble_add_keywords
   setlocal iskeyword+=%
   " Keep media queries etc. together (`@media`)
   setlocal iskeyword+=@
+  " Keep hex colors together (`#abcdef`)
+  setlocal iskeyword+=#
 endif
 
 
