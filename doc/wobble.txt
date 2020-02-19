@@ -28,7 +28,7 @@ Contents                                                       *wobble-contents*
 4. License ....................................... |wobble-license|
 5. Contributing .................................. |wobble-contributing|
 6. Changelog ..................................... |wobble-changelog|
-7 Credits ........................................ |wobble-credits|
+7. Credits ....................................... |wobble-credits|
 
 
 ==============================================================================
