@@ -41,7 +41,7 @@ endfunction
 function! wobble#MapLocalLeader(sequence, map)
   let plugstring =
         \  'noremap <silent><buffer> '
-        \. '<Plug>Wobble_' . a:map . ' '
+        \. '<Plug>Wobble_\' . a:map . ' '
         \. a:sequence
 
   execute 'n' . plugstring
@@ -51,7 +51,7 @@ function! wobble#MapLocalLeader(sequence, map)
     let mapstring =
           \  'map <silent><buffer> '
           \. '<localleader>' . a:map
-          \. ' <Plug>Wobble_' . a:map
+          \. ' <Plug>Wobble_\' . a:map
 
     execute 'n' . mapstring
   endif
