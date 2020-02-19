@@ -30,7 +30,7 @@ to select text in visual mode, or as the targets of commands, like 'delete' and
 'change'. (See `:help text-objects` to learn more.) The diagrams in this section
 show all of wobble's objects, and demonstrate how they work.
 
-### HTML
+### HTML/XML
 
 Attributes:
 
@@ -97,7 +97,7 @@ cd $HOME/.vim/pack/default/start
 git clone https://github.com/a-mg/vim-wobble
 ```
 
-## Docs
+## More
 
 For complete information about using, configuring, and contributing to wobble,
 see `:help wobble`.
