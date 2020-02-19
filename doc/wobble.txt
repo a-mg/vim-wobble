@@ -1,0 +1,242 @@
+*wobble.txt*                Text objects and tweaks for writing HTML/XML and CSS
+------------------------------------------------------------------------------
+
+                                  d8b        d8b        d8b          ~
+                                  ?88        ?88        88P          ~
+                                   88b        88b      d88           ~
+         ?88   d8P  d8P  d8888b    888888b    888888b  888    d8888b ~
+         d88  d8P' d8P' d8P' ?88   88P `?8b   88P `?8b ?88   d8b_,dP ~
+         ?8b ,88b ,88'  88b  d88  d88,  d88  d88,  d88  88b  88b     ~
+         `?888P'888P'   `?8888P' d88 `?88P' d88 `?88P'   88b `?888P' ~
+
+     wobble's {w}eb text {ob}jects {b}ring {l}ightness to your {e}diting
+                        by {a}. {m}attson {g}allagher
+
+
+==============================================================================
+Contents                                                       *wobble-contents*
+
+1. Introduction .................................. |wobble-introduction|
+2. Usage ......................................... |wobble-usage|
+      2.1 HTML - Text objects .................... |wobble-html-objects|
+      2.2 HTML - Commands ........................ |wobble-html-commands|
+      2.3 CSS  - Text objects .................... |wobble-css-objects|
+3. Configuration ................................. |wobble-configuration|
+      3.1 Mappings ............................... |wobble-mappings|
+      3.2 g:wobble_map_textobjects ............... |g:wobble_map_textobjects|
+      3.3 g:wobble_map_localleader ............... |g:wobble_map_localleader|
+4. License ....................................... |wobble-license|
+5. Contributing .................................. |wobble-contributing|
+6. Changelog ..................................... |wobble-changelog|
+7 Credits ........................................ |wobble-credits|
+
+
+==============================================================================
+1. Introduction                                            *wobble-introduction*
+
+wobble adds |text-objects| and commands to help you write HTML/XML and CSS. It
+expands on Vim's built-in |objects| to provide better mnemonics for common
+markup syntax, such as HTML attributes and CSS selectors.
+
+Here's an example. You want to change a div's class from "lorem ipsum" to
+"column". Before, you'd need to first move your cursor between the quotes with
+`f"l`, then type `ci"`. wobble gives you an "inner class" motion that you can
+invoke with your cursor anywhere in the line! Check it out:
+
+        `.........................                  <- cursor position`
+        <div class="lorem ipsum">                  <- buffer line
+                    └── ciC ──┘                    <- motion target ~
+
+
+==============================================================================
+2. Usage                                                          *wobble-usage*
+
+wobble's text objects work just like the ones built into Vim. You can use them
+to select text in visual mode, or as the targets of commands, like 'delete'
+and 'change'. (See |text-objects| to learn more.) The diagrams in this section
+show all of wobble's objects, and demonstrate how they work.
+
+wobble also provides some <LocalLeader> commands for inserting and appending
+text. You can use these to quickly jump and begin inserting text in common
+locations using a single command.
+
+------------------------------------------------------------------------------
+2.1 HTML - Text objects                 *wobble-xml-objects* *wobble-html-objects*
+
+The following diagrams demonstrate wobble's HTML/XML text objects.
+
+Motions for comments: ~
+
+        `...................................        <- cursor position`
+        <!-- lorem ipsum dolor sit amet -->        <- buffer line
+             └────────── ic ──────────┘            <- motion target  ~
+
+Motions for attributes: ~
+
+            `.........................`
+        <div attr-lorem="ipsum dolor" class="sit-amet" id="consectetur">
+            │├── iN ──┘  └── iV ───┤│ ~
+            │└──────── iA ──────────┤ ~
+            └───────── aA ──────────┘ ~
+
+Motions for named attributes and lists: ~
+
+        `................................................................`
+        <div attr-lorem="ipsum dolor" class="sit-amet" id="consectetur">
+            ││                       │       └─ iC ─┘││     └── iI ──┘│ ~
+            ││                       └───────── aC ──┘└──────── aI ───┤ ~
+            │└──────── iL ────────────────────────────────────────────┤ ~
+            └───────── aL ────────────────────────────────────────────┘ ~
+
+(`iC`, `aC`, `iI`, and `aI` can be invoked anywhere in the tag, including on
+the matching closing tag -- as long as your cursor is not on or within another
+nested tag)
+
+------------------------------------------------------------------------------
+2.2 HTML - Commands                   *wobble-xml-commands* *wobble-html-commands*
+
+The following diagrams demonstrate wobble's HTML/XML editing commands.
+
+These examples assume that your <LocalLeader> is mapped to `\` (backslash). If
+your <LocalLeader> is something else, type it in place of `\` when invoking
+these commands.
+
+Inserting and appending class attributes: ~
+
+        `.....                                      <- cursor`
+        <div>                                      <- buffer line, before
+        \iC                                        <- command ~
+        <div class="│">                            <- buffer line, after
+
+        `...................`
+        <div class="lorem">
+        \aC ~
+        <div class="lorem │">
+
+Inserting ID attributes: ~
+
+        `.....`
+        <div class="lorem">
+        \iI ~
+        <div id="│" class="lorem">
+
+Appending attribute lists: ~
+
+        `..............................`
+        <div id="ipsum" class="lorem">
+        \aL ~
+        <div id="ipsum" class="lorem" │>
+
+(All these commands can be invoked anywhere in the tag, including on the
+matching closing tag -- as long as your cursor is not on or within another
+nested tag)
+
+------------------------------------------------------------------------------
+2.3 CSS - Text objects                                      *wobble-css-objects*
+
+The following diagrams demonstrate wobble's CSS text objects.
+
+Motions for declarations: ~
+
+        `........................                   <- cursor position`
+        border: 10px solid blue;                   <- buffer line
+        ├ iP ┘││└──── iV ─────┘│                   <- motion targets ~
+        └ aP ─┘└───── aV ──────┘ ~
+
+                `....`
+        border: 10px solid blue;
+                  └┘ iU ~
+
+(A unit is the alphabetic half of a statement, or a percent sign `%`. This
+motion pairs well with a "number" text object, but that is considered to be
+outside the scope of this plugin)
+
+Motions for selectors: ~
+
+        `.................................`
+        a, a:hover, a:active, a:visited {
+        └──────────── iS ─────────────┘ ~
+
+(`iS` can be invoked anywhere in the block)
+
+
+==============================================================================
+3. Configuration                                          *wobble-configuration*
+
+By default, wobble provides a set of default mappings for its text objects and
+commands. If you don't like them, you can disable them and create your own.
+
+------------------------------------------------------------------------------
+3.1 Mappings                                                   *wobble-mappings*
+
+To create your own mappings, you need to link a key sequence to the internal
+name wobble provides for each object or command, which is the default mapping
+prefixed with the plugin name:
+
+        iC   ->  <Plug>Wobble_iC
+        \aL  ->  <Plug>Wobble_\aL
+
+Text object mappings apply to both |visual-mode| and |operator-pending-mode|.
+To remap wobble's default `iC` to `ixc`, add these lines to your vimrc:
+>
+        xmap ixc <Plug>Wobble_iC
+        omap ixc <Plug>Wobble_iC
+<
+Command mappings apply only in |normal-mode|. To remap wobble's default `\aL`
+to `<LocalLeader>ladd`, add these lines to your vimrc:
+>
+        nmap <LocalLeader>ladd <Plug>Wobble_\aC
+<
+When creating new mappings, you must use the recursive 'map' commands, rather
+than the 'noremap' commands you normally prefer, so that Vim is able to follow
+the internal name to wobble's definitions.
+
+------------------------------------------------------------------------------
+3.2 g:wobble_map_textobjects                          *g:wobble_map_textobjects*
+
+To disable wobble's default text object mappings, add this line to your vimrc:
+>
+        let g:wobble_map_textobjects = 0
+<
+------------------------------------------------------------------------------
+3.3 g:wobble_map_localleader                          *g:wobble_map_localleader*
+
+To disable wobble's default command mappings, add this line to your vimrc:
+>
+        let g:wobble_map_localleader = 0
+<
+==============================================================================
+4. License                                                      *wobble-license*
+
+wobble is MIT licensed. For details, see LICENSE.md.
+
+
+==============================================================================
+5. Contributing                                            *wobble-contributing*
+
+To contribute to this plugin, find it on GitHub. Issues and pull requests are
+welcome, as long as they fit the spirit and style of the existing features.
+
+https://github.com/a-mg/vim-wobble
+
+
+==============================================================================
+6. Changelog                                                  *wobble-changelog*
+
+v1.0.0
+    * Initial stable release
+
+
+==============================================================================
+7. Credits                                                      *wobble-credits*
+
+I learned a lot about writing Vimscript and plugins from Steve Losh's "Learn
+Vimscript the Hard Way" while working on wobble.
+https://learnvimscriptthehardway.stevelosh.com/
+
+The diagrams were inspired by targets.vim.
+https://github.com/wellle/targets.vim
+
+
+------------------------------------------------------------------------------
+vim:tw=78:ts=4:ft=help:norl:
