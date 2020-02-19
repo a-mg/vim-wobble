@@ -5,9 +5,10 @@ let b:loaded_wobble_html = 1
 
 
 
-call wobble#MapTextObject('f"F=Bv2f"'                    , 'aAttr'     , 'aA')
-call wobble#MapTextObject('f"F=gevBo'                    , 'iName'     , 'iN')
-call wobble#MapTextObject('f"F=f"lvi"'                   , 'iValue'    , 'iV')
+call wobble#MapTextObject('hf"F=Bgelv2f"'                , 'aAttr'     , 'aA')
+call wobble#MapTextObject('hf"F=Bv2f"'                   , 'iAttr'     , 'iA')
+call wobble#MapTextObject('hf"F=gevBo'                   , 'iName'     , 'iN')
+call wobble#MapTextObject('hf"F=f"lvi"'                  , 'iValue'    , 'iV')
 
 call wobble#MapTextObject('vato\evi<of o'                , 'aTagAttrs' , 'aL' , '+e')
 call wobble#MapTextObject('vato\evi<oWo'                 , 'iTagAttrs' , 'iL' , '+e')
