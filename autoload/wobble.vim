@@ -1,4 +1,4 @@
-function! wobble#MapTextObject(sequence, name, map, ...)
+function! wobble#MapTextObject(sequence, map, ...)
   " Check option flags and set defaults
   let flags = (a:0 > 0) ? a:1 : ''
   " exe -> wrap rhs in execute "...", allowing searches/special chars
@@ -10,7 +10,7 @@ function! wobble#MapTextObject(sequence, name, map, ...)
 
   let plugstring =
         \  'noremap <silent><buffer> '
-        \. '<Plug>Wobble_' . a:name
+        \. '<Plug>Wobble_' . a:map
         \. ' :<c-u>'
         \. (exe ? 'execute "' : '')
         \. (norm ? 'normal! ' : '')
@@ -29,7 +29,7 @@ function! wobble#MapTextObject(sequence, name, map, ...)
     let mapstring =
           \  'map <silent><buffer> '
           \. a:map
-          \. ' <Plug>Wobble_' . a:name
+          \. ' <Plug>Wobble_' . a:map
 
     execute 'o' . mapstring
     execute 'x' . mapstring
@@ -38,10 +38,10 @@ endfunction
 
 
 
-function! wobble#MapLocalLeader(sequence, name, map)
+function! wobble#MapLocalLeader(sequence, map)
   let plugstring =
         \  'noremap <silent><buffer> '
-        \. '<Plug>Wobble_' . a:name . ' '
+        \. '<Plug>Wobble_' . a:map . ' '
         \. a:sequence
 
   execute 'n' . plugstring
@@ -51,7 +51,7 @@ function! wobble#MapLocalLeader(sequence, name, map)
     let mapstring =
           \  'map <silent><buffer> '
           \. '<localleader>' . a:map
-          \. ' <Plug>Wobble_' . a:name
+          \. ' <Plug>Wobble_' . a:map
 
     execute 'n' . mapstring
   endif
@@ -59,7 +59,7 @@ endfunction
 
 
 
-function! wobble#iUnit()
+function! wobble#iU()
   " Select the WORD and move cursor to start of selection
   normal! viWo
   " Walk forward until cursor is on a unit character
