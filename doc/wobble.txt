@@ -223,8 +223,12 @@ https://github.com/a-mg/vim-wobble
 ==============================================================================
 6. Changelog                                                  *wobble-changelog*
 
+v1.0.1
+    * Motions including searches (iC, aC, iI, aI) now work silently, fixing an
+      error where they would leave a stray ':noh' on the command line.
+    * Fix errors in example diagrams.
 v1.0.0
-    * Initial stable release
+    * Initial stable release.
 
 
 ==============================================================================
