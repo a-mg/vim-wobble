@@ -12,7 +12,7 @@ function! wobble#MapTextObject(sequence, map, ...)
         \  'noremap <silent><buffer> '
         \. '<Plug>Wobble_' . a:map
         \. ' :<c-u>'
-        \. (exe ? 'execute "' : '')
+        \. (exe ? 'silent execute "' : '')
         \. (norm ? 'normal! ' : '')
         \. a:sequence
         \. (exe ? '"' : '')
