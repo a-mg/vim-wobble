@@ -75,7 +75,7 @@ Motions for attributes: ~
 
             `.........................`
         <div attr-lorem="ipsum dolor" class="sit-amet" id="consectetur">
-            │├── iN ──┘  └── iV ───┤│ ~
+            │├── iN ──┘  └── iV ───┘│ ~
             │└──────── iA ──────────┤ ~
             └───────── aA ──────────┘ ~
 
@@ -83,8 +83,8 @@ Motions for named attributes and lists: ~
 
         `................................................................`
         <div attr-lorem="ipsum dolor" class="sit-amet" id="consectetur">
-            ││                       │       └─ iC ─┘││     └── iI ──┘│ ~
-            ││                       └───────── aC ──┘└──────── aI ───┤ ~
+            ││                       │       └─ iC ─┘││    └── iI ───┘│ ~
+            ││                       └───────── aC ──┘└─────── aI ────┤ ~
             │└──────── iL ────────────────────────────────────────────┤ ~
             └───────── aL ────────────────────────────────────────────┘ ~
 
@@ -115,7 +115,7 @@ Inserting and appending class attributes: ~
 
 Inserting ID attributes: ~
 
-        `.....`
+        `...................`
         <div class="lorem">
         \iI ~
         <div id="│" class="lorem">
