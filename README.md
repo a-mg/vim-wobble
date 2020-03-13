@@ -88,6 +88,17 @@ a, a:hover, a:active, a:visited {
 └──────────── iS ─────────────┘
 ```
 
+### Liquid
+
+Objects/tags:
+
+```
+.........................
+{{ page.title | upcase }}
+│  └────── iT ───────┘  │
+└───────── aT ──────────┘
+```
+
 ## Installing
 
 Use your favorite package manager, or use Vim's built-in package support:

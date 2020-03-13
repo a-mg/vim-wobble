@@ -18,9 +18,10 @@ Contents                                                       *wobble-contents*
 
 1. Introduction .................................. |wobble-introduction|
 2. Usage ......................................... |wobble-usage|
-      2.1 HTML - Text objects .................... |wobble-html-objects|
-      2.2 HTML - Commands ........................ |wobble-html-commands|
-      2.3 CSS  - Text objects .................... |wobble-css-objects|
+      2.1 HTML   - Text objects .................. |wobble-html-objects|
+      2.2 HTML   - Commands ...................... |wobble-html-commands|
+      2.3 CSS    - Text objects .................. |wobble-css-objects|
+      2.4 Liquid - Text objects .................. |wobble-liquid-objects|
 3. Configuration ................................. |wobble-configuration|
       3.1 Mappings ............................... |wobble-mappings|
       3.2 g:wobble_map_textobjects ............... |g:wobble_map_textobjects|
@@ -158,6 +159,22 @@ Motions for selectors: ~
         └──────────── iS ─────────────┘ ~
 
 (`iS` can be invoked anywhere in the block)
+
+------------------------------------------------------------------------------
+2.3 Liquid - Text objects                                *wobble-liquid-objects*
+
+The following diagrams demonstrate wobble's liquid text objects. (Liquid is
+the templating language used by Jekyll, Shopify, etc.)
+
+Motions for tags: ~
+
+        `.........................                  <- cursor position`
+        {{ page.title | upcase }}                  <- buffer line
+        │  └────── iT ───────┘  │                  <- motion targets ~
+        └───────── aT ──────────┘ ~
+
+(This motion applies to both liquid "objects" `{{ ... }}` and "tags"
+`{% ... %}`)
 
 
 ==============================================================================
